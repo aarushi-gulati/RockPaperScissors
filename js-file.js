@@ -34,8 +34,6 @@ function playRound(playerChoice, computerChoice){
     }
 }
 
-let playerSelection = "rock"; 
-
 const buttons = document.querySelectorAll('button');
 
 const result = document.createElement('div');
@@ -46,8 +44,6 @@ buttons.forEach((button) => {
         result.textContent = playRound(playerSelection, getComputerChoice())
     });    
 });
-
-result.textContent = playRound(playerSelection, getComputerChoice());
 
 const main = document.querySelector('body');
 main.appendChild(result);
