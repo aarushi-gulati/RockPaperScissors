@@ -47,7 +47,6 @@ buttons.forEach((button) => {
     });    
 });
 
-
 result.textContent = playRound(playerSelection, getComputerChoice());
 
 const main = document.querySelector('body');
