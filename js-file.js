@@ -6,42 +6,55 @@ function getComputerChoice(){
 
 function playRound(playerChoice, computerChoice){
     if (playerChoice.toLowerCase() === 'paper' && computerChoice === `rock`){
-        return ("You win! Paper beats Rock");
+        return ("won");
     }
 
     else if (playerChoice.toLowerCase() === 'rock' && computerChoice === `paper`){
-        return ("You lose! Paper beats Rock");
+        return ("lose");
     }
 
     else if (playerChoice.toLowerCase() === 'paper' && computerChoice === 'scissors'){
-        return ("You lose! Scissors beats Paper");
+        return ("lose");
     }
 
     else if (playerChoice.toLowerCase() === 'scissors' && computerChoice === 'rock'){
-        return ("You lose! Rock beats Scissors");
+        return ("lose");
     }
 
     else if (playerChoice.toLowerCase() === 'rock' && computerChoice === 'scissors'){
-        return ("You win! Rock beats Scissors");
+        return ("won");
     }
 
     else if (playerChoice.toLowerCase() === 'scissors' && computerChoice === 'paper'){
-        return ("You win! Scissors beats Paper");
+        return ("won");
     }
 
     else {
-        return (`It's a draw!`);
+        return (`draw`);
     }
 }
 
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('img');
 
 const result = document.createElement('div');
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         playerSelection = button.id;
-        result.textContent = playRound(playerSelection, getComputerChoice())
+        computerSelection = getComputerChoice();
+        let declaration = playRound(playerSelection, computerSelection);
+        result.setAttribute("id", declaration)
+        if (declaration === "won"){
+            result.textContent = `You ${declaration}! ${playerSelection} beats ${computerSelection}`
+        }
+
+        else if (declaration === "lose"){
+            result.textContent = `You ${declaration}! ${computerSelection} beats ${playerSelection}`
+        }
+
+        else {
+            result.textContent = `It's a draw!`
+        }
     });    
 });
 

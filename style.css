@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+
+#lose {
+    color: red;
+    text-align: center;
+    font-size: 50px;
+}
+
+#won {
+    color: green;
+    text-align: center;
+    font-size: 50px;
+}
+
+#draw {
+    text-align: center;
+    font-size: 50px;
+}
