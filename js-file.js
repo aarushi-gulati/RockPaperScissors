@@ -37,6 +37,10 @@ function playRound(playerChoice, computerChoice){
 const buttons = document.querySelectorAll('img');
 
 const result = document.createElement('div');
+result.classList.add("hehe")
+
+const gif = document.createElement('img');
+gif.classList.add("gif")
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -55,10 +59,23 @@ buttons.forEach((button) => {
         else {
             result.textContent = `It's a draw!`
         }
+        getGIF(declaration)
     });    
 });
 
+async function getGIF(declaration){
+    let search = "victory";
+    if (declaration === "lose"){
+        search = "sad";
+    }
+    if (declaration === "draw"){
+        search = "boring";
+    }
+    let response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=CPWvx8M4H9eqw1xBJP1B2Vwr6V42osQP&s=${search}`, {mode:'cors'});
+    let required = await response.json();
+    gif.setAttribute('src', (required.data.images.original.url))
+    result.appendChild(gif)
+}
+
 const main = document.querySelector('body');
 main.appendChild(result);
-
-console.log(result);
